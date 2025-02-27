@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm</title>
+    <link rel="stylesheet" href="product-detail.css">
+</head>
+<body>
+    <section class="product-detail">
+        <h2>Chi Tiết Sản Phẩm</h2>
+
+        <!-- Slider ảnh -->
+        <div class="image-slider">
+            <div class="slider-container">
+                <img src="./hinh-san-pham-nhap/chitietsp1.png" class="slide active">
+                <img src="./hinh-san-pham-nhap/chitietsp1.1.png" class="slide">
+                <img src="./hinh-san-pham-nhap/chitietsp1.2.png" class="slide">
+                <img src="./hinh-san-pham-nhap/chitietsp1.3.png" class="slide">
+                <img src="./hinh-san-pham-nhap/chitietsp1.4.png" class="slide">
+            </div>
+
+            <!-- Nút chọn hình -->
+            <div class="dots">
+                <span class="dot active" onclick="changeSlide(0)"></span>
+                <span class="dot" onclick="changeSlide(1)"></span>
+                <span class="dot" onclick="changeSlide(2)"></span>
+                <span class="dot" onclick="changeSlide(3)"></span>
+                <span class="dot" onclick="changeSlide(4)"></span>
+            </div>
+        </div>
+
+        <!-- Thông tin sản phẩm -->
+        <div class="detail-text">
+            <h3>Sản Phẩm 1</h3>
+            <p class="price">150.000 VNĐ</p>
+            <p>Đây là mô tả chi tiết của sản phẩm. Sản phẩm có chất lượng cao, thiết kế đẹp mắt, phù hợp với mọi nhu cầu sử dụng.</p>
+            <a href="index.html" class="btn"><span>Quay Lại</span></a>
+        </div>
+    </section>
+
+    <script src="product-detail.js"></script>
+</body>
+</html>
