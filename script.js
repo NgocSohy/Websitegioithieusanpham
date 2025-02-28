@@ -1,3 +1,4 @@
+/* Script */
 document.addEventListener("DOMContentLoaded", function () {
     const productSection = document.querySelector(".products");
 
