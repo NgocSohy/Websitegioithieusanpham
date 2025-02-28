@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="product-detail.css">
 </head>
 <body>
+    <div class="background-animation"></div> <!-- Nền động -->
+
     <section class="product-detail">
         <h2>Chi Tiết Sản Phẩm</h2>
 
@@ -19,15 +21,7 @@
                 <img src="./chitietsp1.3.png" class="slide">
                 <img src="./chitietsp1.4.png" class="slide">
             </div>
-
-            <!-- Nút chọn hình -->
-            <div class="dots">
-                <span class="dot active" onclick="changeSlide(0)"></span>
-                <span class="dot" onclick="changeSlide(1)"></span>
-                <span class="dot" onclick="changeSlide(2)"></span>
-                <span class="dot" onclick="changeSlide(3)"></span>
-                <span class="dot" onclick="changeSlide(4)"></span>
-            </div>
+            <div class="dots"></div> <!-- Dots tự động tạo từ JS -->
         </div>
 
         <!-- Thông tin sản phẩm -->

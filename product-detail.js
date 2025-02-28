@@ -1,29 +1,26 @@
 let currentIndex = 0;
 const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
+const dotsContainer = document.querySelector(".dots");
 
-// Đảm bảo chỉ ảnh đầu tiên hiển thị khi trang tải lên
-slides.forEach((slide, index) => {
-    slide.style.display = index === 0 ? "block" : "none";
-    slide.style.opacity = index === 0 ? "1" : "0";
+// Tạo dots tự động
+slides.forEach((_, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    dot.addEventListener("click", () => changeSlide(index));
+    dotsContainer.appendChild(dot);
 });
+const dots = document.querySelectorAll(".dot");
+dots[0].classList.add("active");
 
+// Hàm đổi slide
 function changeSlide(index) {
-    slides[currentIndex].style.opacity = "0";
-    
-    setTimeout(() => {
-        slides[currentIndex].style.display = "none";
-        slides[index].style.display = "block";
-        slides[index].style.opacity = "0";
-        
-        setTimeout(() => {
-            slides[index].style.opacity = "1";
-        }, 100);
-        
-        dots[currentIndex].classList.remove("active");
-        dots[index].classList.add("active");
-        currentIndex = index;
-    }, 300);
+    slides[currentIndex].classList.remove("active");
+    dots[currentIndex].classList.remove("active");
+
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+
+    currentIndex = index;
 }
 
 // Tự động chuyển slide mỗi 5 giây
@@ -32,7 +29,14 @@ setInterval(() => {
     changeSlide(nextIndex);
 }, 5000);
 
-// Bắt sự kiện click vào nút chọn hình
-dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => changeSlide(index));
+// Hỗ trợ vuốt trên di động
+let touchStartX = 0;
+document.querySelector(".slider-container").addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+
+document.querySelector(".slider-container").addEventListener("touchend", (e) => {
+    let touchEndX = e.changedTouches[0].clientX;
+    if (touchEndX < touchStartX - 50) changeSlide((currentIndex + 1) % slides.length);
+    if (touchEndX > touchStartX + 50) changeSlide((currentIndex - 1 + slides.length) % slides.length);
 });
