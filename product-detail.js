@@ -1,42 +1,58 @@
-let currentIndex = 0;
-const slides = document.querySelectorAll(".slide");
-const dotsContainer = document.querySelector(".dots");
+document.addEventListener("DOMContentLoaded", () => {
+    // Xử lý slider ảnh (hiện tại chỉ có 1 ảnh mỗi sản phẩm, nhưng sẵn sàng cho nhiều ảnh)
+    const products = document.querySelectorAll(".product");
+    
+    products.forEach(product => {
+        const slides = product.querySelectorAll(".slide");
+        let currentIndex = 0;
 
-// Tạo dots tự động
-slides.forEach((_, index) => {
-    const dot = document.createElement("span");
-    dot.classList.add("dot");
-    dot.addEventListener("click", () => changeSlide(index));
-    dotsContainer.appendChild(dot);
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[index].classList.add("active");
+            currentIndex = index;
+        }
+
+        // Hiển thị slide đầu tiên
+        if (slides.length > 0) {
+            showSlide(0);
+        }
+
+        // Hỗ trợ vuốt trên mobile (nếu thêm nhiều ảnh sau này)
+        const sliderContainer = product.querySelector(".slider-container");
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        sliderContainer.addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        sliderContainer.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchStartX - touchEndX > 50 && currentIndex < slides.length - 1) {
+                showSlide(currentIndex + 1);
+            } else if (touchEndX - touchStartX > 50 && currentIndex > 0) {
+                showSlide(currentIndex - 1);
+            }
+        }
+    });
 });
-const dots = document.querySelectorAll(".dot");
-dots[0].classList.add("active");
-
-// Hàm đổi slide
-function changeSlide(index) {
-    slides[currentIndex].classList.remove("active");
-    dots[currentIndex].classList.remove("active");
-
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
-
-    currentIndex = index;
-}
-
-// Tự động chuyển slide mỗi 5 giây
-setInterval(() => {
-    let nextIndex = (currentIndex + 1) % slides.length;
-    changeSlide(nextIndex);
-}, 5000);
-
-// Hỗ trợ vuốt trên di động
-let touchStartX = 0;
-document.querySelector(".slider-container").addEventListener("touchstart", (e) => {
-    touchStartX = e.touches[0].clientX;
-});
-
-document.querySelector(".slider-container").addEventListener("touchend", (e) => {
-    let touchEndX = e.changedTouches[0].clientX;
-    if (touchEndX < touchStartX - 50) changeSlide((currentIndex + 1) % slides.length);
-    if (touchEndX > touchStartX + 50) changeSlide((currentIndex - 1 + slides.length) % slides.length);
+document.addEventListener("DOMContentLoaded", () => {
+    // Hiện tại không cần slider vì mỗi sản phẩm chỉ có 1 ảnh
+    // Nếu muốn thêm slider sau này, có thể mở rộng từ đây
+    
+    // Thêm hiệu ứng hành động khi nhấp vào ảnh
+    const images = document.querySelectorAll(".product-image");
+    
+    images.forEach(image => {
+        image.addEventListener("click", () => {
+            image.classList.add("pulse");
+            setTimeout(() => {
+                image.classList.remove("pulse");
+            }, 300); // Thời gian pulse animation
+        });
+    });
 });
