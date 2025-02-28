@@ -3,14 +3,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function revealOnScroll() {
         const sectionPosition = productSection.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.2; // Hiển thị sớm hơn chút để mượt hơn
+        const screenPosition = window.innerHeight / 1.2;
 
         if (sectionPosition < screenPosition) {
             productSection.classList.add("active");
-            window.removeEventListener("scroll", revealOnScroll); // Gỡ sự kiện sau khi kích hoạt để tránh lặp lại
+            window.removeEventListener("scroll", revealOnScroll);
         }
     }
 
     window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll(); // Kiểm tra ngay nếu section đã trong tầm nhìn
+    revealOnScroll();
 });
