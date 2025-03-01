@@ -2,50 +2,50 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="theme-color" content="#49a770">
     <title>Chi Tiết Sản Phẩm</title>
     <link rel="stylesheet" href="product-detail.css">
+    <!-- Tải font Poppins từ Google Fonts bất đồng bộ -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" media="print" onload="this.media='all'">
+    <!-- Preload hình ảnh chính để tăng tốc độ tải -->
+    <link rel="preload" href="./chitietsp1.png" as="image">
+    <link rel="preload" href="./chitietsp2.png" as="image">
 </head>
 <body>
-    <div class="background-animation"></div> <!-- Nền động -->
+    <div class="background-animation"></div>
     
-    <!-- Sản phẩm 1 -->
-    <section class="product-detail">
-        <h2>Chi Tiết Sản Phẩm 01</h2>
+    <main>
+        <!-- Sản phẩm 1 -->
+        <section class="product-detail" data-product="1">
+            <h2>Chi Tiết Sản Phẩm 01</h2>
+            <div class="image-container">
+                <img src="./chitietsp1.png" class="product-image" alt="Gel dưỡng tóc" loading="lazy" decoding="async">
+            </div>
+            <div class="detail-text">
+                <h3>GEL DƯỠNG TÓC</h3>
+                <p class="price">150.000 VNĐ</p>
+                <p>Thành phần: Tinh dầu vỏ bưởi nguyên chất, Vitamin B5 (Panthenol)...</p>
+                <p>Công dụng: Phục hồi tóc hư tổn, tóc khô xơ, giúp tóc chắc khỏe và bóng mượt.</p>
+            </div>
+        </section>
 
-        <!-- Ảnh sản phẩm -->
-        <div class="image-container">
-            <img src="./chitietsp1.png" class="product-image">
-        </div>
+        <!-- Sản phẩm 2 -->
+        <section class="product-detail" data-product="2">
+            <h2>Chi Tiết Sản Phẩm 02</h2>
+            <div class="image-container">
+                <img src="./chitietsp2.png" class="product-image" alt="Xịt dưỡng tóc" loading="lazy" decoding="async">
+            </div>
+            <div class="detail-text">
+                <h3>XỊT DƯỠNG TÓC</h3>
+                <p class="price">180.000 VNĐ</p>
+                <p>Thành phần: Tinh dầu thiên nhiên, Collagen, Vitamin E...</p>
+                <p>Công dụng: Cung cấp độ ẩm, giúp tóc mềm mại, chống xơ rối và bảo vệ tóc khỏi nhiệt.</p>
+                <a href="index.html" class="btn"><span>Quay Lại</span></a>
+            </div>
+        </section>
+    </main>
 
-        <!-- Thông tin sản phẩm -->
-        <div class="detail-text">
-            <h3>GEL DƯỠNG TÓC</h3>
-            <p class="price">150.000 VNĐ</p>
-            <p>Thành phần: Tinh dầu vỏ bưởi nguyên chất, Vitamin B5 (Panthenol)...</p>
-            <p>Công dụng: Phục hồi tóc hư tổn, tóc khô xơ, giúp tóc chắc khỏe và bóng mượt.</p>
-        </div>
-    </section>
-
-    <!-- Sản phẩm 2 -->
-    <section class="product-detail">
-        <h2>Chi Tiết Sản Phẩm 02</h2>
-
-        <!-- Ảnh sản phẩm -->
-        <div class="image-container">
-            <img src="./chitietsp2.png" class="product-image">
-        </div>
-
-        <!-- Thông tin sản phẩm -->
-        <div class="detail-text">
-            <h3>XỊT DƯỠNG TÓC</h3>
-            <p class="price">180.000 VNĐ</p>
-            <p>Thành phần: Tinh dầu thiên nhiên, Collagen, Vitamin E...</p>
-            <p>Công dụng: Cung cấp độ ẩm, giúp tóc mềm mại, chống xơ rối và bảo vệ tóc khỏi nhiệt.</p>
-            <a href="index.html" class="btn"><span>Quay Lại</span></a>
-        </div>
-    </section>
-
-    <script src="product-detail.js"></script>
+    <script src="product-detail.js" defer></script>
 </body>
 </html>
