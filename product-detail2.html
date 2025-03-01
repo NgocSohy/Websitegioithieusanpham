@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi Tiết Sản Phẩm</title>
     <link rel="stylesheet" href="product-detail2.css">
+    <!-- Preload hình ảnh để tăng tốc độ tải -->
+    <link rel="preload" href="./chitietsp1.png" as="image">
+    <link rel="preload" href="./chitietsp2.png" as="image">
 </head>
 <body>
-    <div class="background-animation"></div> <!-- Nền động -->
+    <div class="background-animation"></div>
 
     <section class="product-detail">
         <h2>Chi Tiết Sản Phẩm</h2>
 
         <!-- Sản phẩm 1 -->
         <div class="product">
-            <!-- Slider ảnh -->
             <div class="image-slider">
                 <div class="slider-container">
-                    <img src="./chitietsp1.png" class="slide active" alt="Sản phẩm 1">
+                    <img src="./chitietsp1.png" class="slide active" alt="Sản phẩm 1" loading="lazy" decoding="async">
                 </div>
             </div>
-
-            <!-- Thông tin sản phẩm -->
             <div class="detail-text">
                 <h3 class="product-title">Sản Phẩm 1</h3>
                 <p class="price">150.000 VNĐ</p>
@@ -29,25 +29,17 @@
             </div>
         </div>
 
-        <!-- Khoảng cách lớn hơn -->
         <div class="spacer"></div>
-
-        <!-- Thanh ngang phân tách -->
         <hr class="separator">
-
-        <!-- Khoảng cách lớn hơn -->
         <div class="spacer"></div>
 
         <!-- Sản phẩm 2 -->
         <div class="product">
-            <!-- Slider ảnh -->
             <div class="image-slider">
                 <div class="slider-container">
-                    <img src="./chitietsp2.png" class="slide active" alt="Sản phẩm 2">
+                    <img src="./chitietsp2.png" class="slide active" alt="Sản phẩm 2" loading="lazy" decoding="async">
                 </div>
             </div>
-
-            <!-- Thông tin sản phẩm -->
             <div class="detail-text">
                 <h3 class="product-title">Sản Phẩm 2</h3>
                 <p class="price">250.000 VNĐ</p>
@@ -55,10 +47,9 @@
             </div>
         </div>
 
-        <!-- Nút quay lại -->
         <a href="index.html" class="btn"><span>Quay Lại</span></a>
     </section>
 
-    <script src="product-detail.js"></script>
+    <script src="product-detail.js" defer></script> <!-- Thêm defer để tải bất đồng bộ -->
 </body>
 </html>

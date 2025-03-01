@@ -48,7 +48,7 @@ h2 {
     opacity: 0;
     transform: translateY(-20px);
     animation: slideInDown 0.8s ease-out forwards;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Giữ shadow nhẹ */
     margin-bottom: 10px;
     will-change: opacity, transform;
 }
@@ -60,13 +60,11 @@ h2 {
     margin: 20px auto;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
-                0 0 20px rgba(124, 255, 124, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Xóa hào quang, chỉ giữ shadow cơ bản */
     opacity: 0;
     animation: zoomIn 0.8s ease-out forwards,
-               heartbeat 2s infinite ease-in-out, /* Giữ lại heartbeat */
-               glow 3s infinite ease-in-out;
-    will-change: transform, opacity, box-shadow;
+               heartbeat 2s infinite ease-in-out; /* Giữ heartbeat */
+    will-change: transform, opacity;
     backface-visibility: hidden;
 }
 
@@ -91,7 +89,7 @@ h2 {
     opacity: 0;
     animation: slideInLeft 0.8s ease-out forwards;
     line-height: 1.5;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Giữ shadow nhẹ */
     will-change: opacity, transform;
 }
 
@@ -100,10 +98,8 @@ h2 {
     font-size: 28px;
     font-weight: bold;
     color: #ffffff;
-    text-shadow: 0 0 8px rgba(124, 255, 124, 1),
-                 0 0 15px rgba(124, 255, 124, 0.9);
-    animation: textGlow 3s infinite ease-in-out;
-    will-change: text-shadow;
+    /* Xóa text-shadow phát sáng */
+    will-change: transform; /* Xóa will-change cho text-shadow */
 }
 
 /* Giá sản phẩm */
@@ -113,9 +109,9 @@ h2 {
     font-weight: bold;
     opacity: 0;
     animation: zoomIn 0.8s ease-out forwards,
-               heartbeat 2s infinite ease-in-out; /* Giữ lại heartbeat */
+               heartbeat 2s infinite ease-in-out; /* Giữ heartbeat */
     margin-top: 10px;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Giữ shadow nhẹ */
     will-change: transform, opacity;
 }
 
@@ -177,30 +173,6 @@ h2 {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* Hiệu ứng hào quang cho ảnh */
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
-                    0 0 20px rgba(124, 255, 124, 0.8);
-    }
-    50% {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
-                    0 0 30px rgba(124, 255, 124, 1);
-    }
-}
-
-/* Hiệu ứng hào quang cho chữ */
-@keyframes textGlow {
-    0%, 100% {
-        text-shadow: 0 0 8px rgba(124, 255, 124, 1),
-                     0 0 15px rgba(124, 255, 124, 0.9);
-    }
-    50% {
-        text-shadow: 0 0 15px rgba(124, 255, 124, 1),
-                     0 0 30px rgba(124, 255, 124, 0.9);
-    }
-}
-
 /* Responsive tối ưu cho điện thoại */
 @media (max-width: 768px) {
     .product-detail {
@@ -210,8 +182,7 @@ h2 {
     .image-container {
         max-width: 95%;
         animation: zoomIn 0.8s ease-out forwards,
-                   heartbeat 2s infinite ease-in-out, /* Khôi phục heartbeat */
-                   glow 3s infinite ease-in-out;
+                   heartbeat 2s infinite ease-in-out; /* Giữ heartbeat */
     }
 
     .detail-text {
@@ -221,13 +192,12 @@ h2 {
 
     .detail-text h3 {
         font-size: 24px;
-        animation: textGlow 3s infinite ease-in-out;
     }
 
     .price {
         font-size: 22px;
         animation: zoomIn 0.8s ease-out forwards,
-                   heartbeat 2s infinite ease-in-out; /* Khôi phục heartbeat */
+                   heartbeat 2s infinite ease-in-out; /* Giữ heartbeat */
     }
 
     .btn {

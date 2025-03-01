@@ -9,10 +9,11 @@
 body {
     background: #F5E6DA;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.5;
     overflow-x: hidden;
     text-align: center;
     position: relative;
+    min-height: 100vh;
 }
 
 /* Nền động thay đổi màu sắc */
@@ -26,6 +27,7 @@ body {
     background-size: 300% 300%;
     animation: gradientBG 10s infinite alternate ease-in-out;
     z-index: -1;
+    will-change: background-position;
 }
 
 @keyframes gradientBG {
@@ -37,28 +39,31 @@ body {
 .product-detail {
     padding: 40px 20px;
     opacity: 0;
-    transform: translateY(50px);
-    animation: fadeInPage 1.2s ease-in-out forwards;
+    transform: translateY(30px);
+    animation: fadeInPage 0.8s ease-out forwards;
+    will-change: opacity, transform;
 }
 
 .product-detail h2 {
     font-size: 2em;
     color: #388E3C;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     opacity: 0;
-    animation: slideInLeft 1.2s ease-in-out 0.2s forwards;
+    animation: slideInLeft 0.8s ease-out 0.1s forwards;
+    will-change: opacity, transform;
 }
 
 /* Product Container */
 .product {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
+/* Image Slider - Thêm hiệu ứng phát sáng */
 .image-slider {
     width: 100%;
     max-width: 400px;
@@ -66,7 +71,11 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
+                0 0 15px rgba(168, 230, 207, 0.7); /* Hào quang tĩnh */
+    animation: glowEffect 2s infinite ease-in-out; /* Hào quang nhấp nháy */
+    backface-visibility: hidden;
+    will-change: box-shadow;
 }
 
 .slider-container {
@@ -84,27 +93,29 @@ body {
     left: 0;
     top: 0;
     opacity: 0;
-    transform: scale(1.1);
-    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .slide.active {
     opacity: 1;
-    transform: scale(1);
-    animation: zoomInSlide 1.5s ease-in-out forwards;
+    animation: zoomRotateIn 1s ease-out forwards;
+    will-change: transform, opacity;
 }
 
 /* Detail Text */
 .detail-text {
     max-width: 500px;
-    margin: 20px auto;
+    margin: 15px auto;
 }
 
 .detail-text .product-title {
     font-size: 1.8em;
     color: #388E3C;
     opacity: 0;
-    animation: flipIn 1.2s ease-in-out 0.4s forwards;
+    text-shadow: 0 0 10px rgba(168, 230, 207, 0.7); /* Hào quang tĩnh */
+    animation: flipIn 0.8s ease-out 0.3s forwards,
+               textGlowEffect 2s infinite ease-in-out; /* Hào quang nhấp nháy */
+    will-change: opacity, transform, text-shadow;
 }
 
 .detail-text .price {
@@ -112,14 +123,16 @@ body {
     color: #D84315;
     font-weight: bold;
     opacity: 0;
-    animation: slideInRight 1.2s ease-in-out 0.6s forwards;
+    animation: slideInRight 0.8s ease-out 0.4s forwards;
+    will-change: opacity, transform;
 }
 
 .detail-text p.product-desc {
     font-size: 1em;
     color: #555;
     opacity: 0;
-    animation: fadeInText 1.2s ease-in-out 0.8s forwards;
+    animation: fadeInText 0.8s ease-out 0.5s forwards;
+    will-change: opacity, transform;
 }
 
 /* Button */
@@ -132,40 +145,47 @@ body {
     font-size: 1.2em;
     font-weight: bold;
     border-radius: 30px;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
     opacity: 0;
     transform: scale(0.9);
-    animation: rotateIn 1.2s ease-in-out 1s forwards;
+    animation: rotateIn 0.8s ease-out 0.6s forwards;
+    will-change: transform, opacity;
 }
 
 .btn:hover {
     background: linear-gradient(135deg, #43A047, #1B5E20);
     transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Spacer và Separator */
 .spacer {
-    height: 20px;
+    height: 15px;
 }
 
 .separator {
     width: 60%;
-    height: 4px;
+    height: 2px;
     background-color: #388E3C;
     border: none;
-    margin: 20px auto;
+    margin: 15px auto;
 }
 
 /* Hiệu ứng xuất hiện */
 @keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(50px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes zoomIn {
-    from { transform: scale(0.5); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+@keyframes zoomRotateIn {
+    from {
+        transform: scale(1.5) rotate(360deg);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
 }
 
 @keyframes rotateIn {
@@ -173,18 +193,18 @@ body {
     to { transform: rotate(0); opacity: 1; }
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@keyframes fadeInText {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInLeft {
-    from { transform: translateX(-100%); opacity: 0; }
+    from { transform: translateX(-50%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
+    from { transform: translateX(50%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
 }
 
@@ -193,14 +213,26 @@ body {
     to { transform: rotateY(0); opacity: 1; }
 }
 
-@keyframes fadeInText {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Hiệu ứng phát sáng cho ảnh */
+@keyframes glowEffect {
+    0%, 100% {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
+                    0 0 15px rgba(168, 230, 207, 0.7); /* Nhỏ hơn */
+    }
+    50% {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
+                    0 0 25px rgba(168, 230, 207, 0.9); /* Lớn hơn */
+    }
 }
 
-@keyframes zoomInSlide {
-    from { transform: scale(1.2); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+/* Hiệu ứng phát sáng cho chữ */
+@keyframes textGlowEffect {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(168, 230, 207, 0.7);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(168, 230, 207, 0.9);
+    }
 }
 
 /* Responsive */
