@@ -63,7 +63,7 @@ body {
     gap: 15px;
 }
 
-/* Image Slider - Thêm hiệu ứng phát sáng */
+/* Image Slider - Hiệu ứng phát sáng rõ hơn */
 .image-slider {
     width: 100%;
     max-width: 400px;
@@ -72,8 +72,8 @@ body {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
-                0 0 15px rgba(168, 230, 207, 0.7); /* Hào quang tĩnh */
-    animation: glowEffect 2s infinite ease-in-out; /* Hào quang nhấp nháy */
+                0 0 20px rgba(128, 255, 212, 0.8); /* Tăng độ sáng và lan tỏa */
+    animation: glowEffect 2s infinite ease-in-out;
     backface-visibility: hidden;
     will-change: box-shadow;
 }
@@ -112,9 +112,9 @@ body {
     font-size: 1.8em;
     color: #388E3C;
     opacity: 0;
-    text-shadow: 0 0 10px rgba(168, 230, 207, 0.7); /* Hào quang tĩnh */
+    text-shadow: 0 0 15px rgba(128, 255, 212, 0.8); /* Tăng độ sáng và lan tỏa */
     animation: flipIn 0.8s ease-out 0.3s forwards,
-               textGlowEffect 2s infinite ease-in-out; /* Hào quang nhấp nháy */
+               textGlowEffect 2s infinite ease-in-out;
     will-change: opacity, transform, text-shadow;
 }
 
@@ -213,25 +213,25 @@ body {
     to { transform: rotateY(0); opacity: 1; }
 }
 
-/* Hiệu ứng phát sáng cho ảnh */
+/* Hiệu ứng phát sáng cho ảnh - Rõ hơn */
 @keyframes glowEffect {
     0%, 100% {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
-                    0 0 15px rgba(168, 230, 207, 0.7); /* Nhỏ hơn */
+                    0 0 20px rgba(128, 255, 212, 0.8); /* Nhỏ hơn, sáng hơn */
     }
     50% {
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
-                    0 0 25px rgba(168, 230, 207, 0.9); /* Lớn hơn */
+                    0 0 40px rgba(128, 255, 212, 1); /* Lớn hơn, rõ hơn */
     }
 }
 
-/* Hiệu ứng phát sáng cho chữ */
+/* Hiệu ứng phát sáng cho chữ - Rõ hơn */
 @keyframes textGlowEffect {
     0%, 100% {
-        text-shadow: 0 0 10px rgba(168, 230, 207, 0.7);
+        text-shadow: 0 0 15px rgba(128, 255, 212, 0.8); /* Nhỏ hơn, sáng hơn */
     }
     50% {
-        text-shadow: 0 0 20px rgba(168, 230, 207, 0.9);
+        text-shadow: 0 0 30px rgba(128, 255, 212, 1); /* Lớn hơn, rõ hơn */
     }
 }
 
