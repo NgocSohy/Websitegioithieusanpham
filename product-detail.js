@@ -56,3 +56,24 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+// Chọn tất cả các hình sản phẩm
+const productImages = document.querySelectorAll('.product-image');
+
+// Thêm sự kiện click cho từng hình sản phẩm
+productImages.forEach(image => {
+    image.addEventListener('click', () => {
+        // Xóa animation hiện tại
+        image.style.animation = 'none';
+        // Buộc reflow để reset trạng thái
+        void image.offsetWidth;
+        // Áp dụng animation quay vòng và nổ
+        image.style.animation = 'spinAndExplode 1s ease-in-out forwards';
+        
+        // Sau khi nổ xong, reset về trạng thái mặc định (rơi từ trên xuống)
+        image.addEventListener('animationend', () => {
+            image.style.animation = 'none';
+            void image.offsetWidth; // Reflow lần nữa
+            image.style.animation = 'fallFromTop 1.2s ease-out forwards';
+        }, { once: true }); // Chỉ chạy một lần
+    });
+});
