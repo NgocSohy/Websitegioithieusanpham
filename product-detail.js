@@ -77,3 +77,61 @@ productImages.forEach(image => {
         }, { once: true }); // Chỉ chạy một lần
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Xử lý slider ảnh (hiện tại chỉ có 1 ảnh mỗi sản phẩm)
+    const products = document.querySelectorAll(".product");
+    
+    products.forEach(product => {
+        const slides = product.querySelectorAll(".slide");
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove("active"));
+            slides[index].classList.add("active");
+            currentIndex = index;
+        }
+
+        if (slides.length > 0) {
+            showSlide(0);
+        }
+
+        // Hỗ trợ vuốt trên mobile
+        const sliderContainer = product.querySelector(".slider-container");
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        sliderContainer.addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        sliderContainer.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchStartX - touchEndX > 50 && currentIndex < slides.length - 1) {
+                showSlide(currentIndex + 1);
+            } else if (touchEndX - touchStartX > 50 && currentIndex > 0) {
+                showSlide(currentIndex - 1);
+            }
+        }
+    });
+
+    // Hiệu ứng quay vòng và nổ khi nhấp vào ảnh
+    const productImages = document.querySelectorAll(".slide.active"); // Chỉ áp dụng cho ảnh active
+    
+    productImages.forEach(image => {
+        image.addEventListener("click", () => {
+            image.style.animation = 'none';
+            void image.offsetWidth; // Reflow
+            image.style.animation = 'spinAndExplode 0.8s ease-in-out forwards'; // Rút ngắn từ 1s
+            
+            image.addEventListener("animationend", () => {
+                image.style.animation = 'none';
+                void image.offsetWidth; // Reflow
+                image.style.animation = 'fallFromTop 1s ease-out forwards'; // Rút ngắn từ 1.2s
+            }, { once: true });
+        });
+    });
+});

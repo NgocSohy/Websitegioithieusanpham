@@ -25,7 +25,7 @@ body {
     height: 100%;
     background: linear-gradient(-45deg, #A8E6CF, #F5E6DA, #DCEDC1, #FFE0B2);
     background-size: 300% 300%;
-    animation: gradientBG 10s infinite alternate ease-in-out;
+    animation: gradientBG 8s infinite alternate ease-in-out; /* Rút ngắn từ 10s */
     z-index: -1;
     will-change: background-position;
 }
@@ -37,45 +37,50 @@ body {
 
 /* Product Detail Section */
 .product-detail {
-    padding: 40px 20px;
+    padding: 30px 15px; /* Giảm padding để tối ưu không gian */
     opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInPage 0.8s ease-out forwards;
+    transform: translateY(20px); /* Giảm biên độ */
+    animation: fadeInPage 0.6s ease-out forwards; /* Rút ngắn từ 0.8s */
     will-change: opacity, transform;
 }
 
 .product-detail h2 {
-    font-size: 2em;
+    font-size: 1.8em; /* Giảm nhẹ kích thước */
     color: #388E3C;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Giảm margin */
     opacity: 0;
-    animation: slideInLeft 0.8s ease-out 0.1s forwards;
+    animation: slideInLeft 0.6s ease-out 0.1s forwards; /* Rút ngắn từ 0.8s */
     will-change: opacity, transform;
 }
 
 /* Product Container */
 .product {
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* Giảm margin */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px; /* Giảm gap */
 }
 
-/* Image Slider - Hiệu ứng phát sáng rõ hơn */
+/* Image Slider */
 .image-slider {
     width: 100%;
-    max-width: 400px;
+    max-width: 400px; /* Kích thước mặc định */
     height: 300px;
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
-                0 0 20px rgba(128, 255, 212, 0.8); /* Tăng độ sáng và lan tỏa */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15),
+                0 0 15px rgba(128, 255, 212, 0.8); /* Giảm độ lan tỏa để nhẹ hơn */
     animation: glowEffect 2s infinite ease-in-out;
     backface-visibility: hidden;
-    will-change: box-shadow;
+    will-change: box-shadow, transform;
+}
+
+/* Class cho hình lớn gấp 3 */
+.image-slider.large-image {
+    max-width: 1200px; /* To gấp 3 lần (400px * 3) */
 }
 
 .slider-container {
@@ -93,62 +98,62 @@ body {
     left: 0;
     top: 0;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.4s ease-in-out; /* Rút ngắn từ 0.5s */
 }
 
 .slide.active {
     opacity: 1;
-    animation: zoomRotateIn 1s ease-out forwards;
+    animation: zoomRotateIn 0.6s ease-out forwards; /* Rút ngắn từ 1s */
     will-change: transform, opacity;
 }
 
 /* Detail Text */
 .detail-text {
     max-width: 500px;
-    margin: 15px auto;
+    margin: 10px auto; /* Giảm margin */
 }
 
 .detail-text .product-title {
-    font-size: 1.8em;
+    font-size: 1.6em; /* Giảm nhẹ kích thước */
     color: #388E3C;
     opacity: 0;
-    text-shadow: 0 0 15px rgba(128, 255, 212, 0.8); /* Tăng độ sáng và lan tỏa */
-    animation: flipIn 0.8s ease-out 0.3s forwards,
+    text-shadow: 0 0 10px rgba(128, 255, 212, 0.8); /* Giảm độ lan tỏa */
+    animation: flipIn 0.6s ease-out 0.2s forwards, /* Rút ngắn từ 0.8s */
                textGlowEffect 2s infinite ease-in-out;
     will-change: opacity, transform, text-shadow;
 }
 
 .detail-text .price {
-    font-size: 1.5em;
+    font-size: 1.4em; /* Giảm nhẹ kích thước */
     color: #D84315;
     font-weight: bold;
     opacity: 0;
-    animation: slideInRight 0.8s ease-out 0.4s forwards;
+    animation: slideInRight 0.6s ease-out 0.3s forwards; /* Rút ngắn từ 0.8s */
     will-change: opacity, transform;
 }
 
 .detail-text p.product-desc {
-    font-size: 1em;
+    font-size: 0.9em; /* Giảm nhẹ kích thước */
     color: #555;
     opacity: 0;
-    animation: fadeInText 0.8s ease-out 0.5s forwards;
+    animation: fadeInText 0.6s ease-out 0.4s forwards; /* Rút ngắn từ 0.8s */
     will-change: opacity, transform;
 }
 
 /* Button */
 .btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 10px 25px; /* Giảm padding nhẹ */
     background: linear-gradient(135deg, #388E3C, #2E7D32);
     color: white;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.1em; /* Giảm nhẹ kích thước */
     font-weight: bold;
     border-radius: 30px;
-    transition: transform 0.2s ease, background 0.2s ease;
+    transition: transform 0.2s ease-out, background 0.2s ease-out; /* Rút ngắn từ 0.3s */
     opacity: 0;
     transform: scale(0.9);
-    animation: rotateIn 0.8s ease-out 0.6s forwards;
+    animation: rotateIn 0.6s ease-out 0.5s forwards; /* Rút ngắn từ 0.8s */
     will-change: transform, opacity;
 }
 
@@ -160,7 +165,7 @@ body {
 
 /* Spacer và Separator */
 .spacer {
-    height: 15px;
+    height: 10px; /* Giảm chiều cao spacer */
 }
 
 .separator {
@@ -168,43 +173,37 @@ body {
     height: 2px;
     background-color: #388E3C;
     border: none;
-    margin: 15px auto;
+    margin: 10px auto; /* Giảm margin */
 }
 
 /* Hiệu ứng xuất hiện */
 @keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(20px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes zoomRotateIn {
-    from {
-        transform: scale(1.5) rotate(360deg);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-    }
+    from { transform: scale(1.3) rotate(180deg); opacity: 0; } /* Giảm biên độ */
+    to { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
 @keyframes rotateIn {
-    from { transform: rotate(-180deg); opacity: 0; }
+    from { transform: rotate(-90deg); opacity: 0; } /* Giảm biên độ */
     to { transform: rotate(0); opacity: 1; }
 }
 
 @keyframes fadeInText {
-    from { opacity: 0; transform: translateY(15px); }
+    from { opacity: 0; transform: translateY(10px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInLeft {
-    from { transform: translateX(-50%); opacity: 0; }
+    from { transform: translateX(-30px); opacity: 0; } /* Giảm biên độ */
     to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideInRight {
-    from { transform: translateX(50%); opacity: 0; }
+    from { transform: translateX(30px); opacity: 0; } /* Giảm biên độ */
     to { transform: translateX(0); opacity: 1; }
 }
 
@@ -213,44 +212,70 @@ body {
     to { transform: rotateY(0); opacity: 1; }
 }
 
-/* Hiệu ứng phát sáng cho ảnh - Rõ hơn */
+/* Hiệu ứng phát sáng cho ảnh */
 @keyframes glowEffect {
-    0%, 100% {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
-                    0 0 20px rgba(128, 255, 212, 0.8); /* Nhỏ hơn, sáng hơn */
-    }
-    50% {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15),
-                    0 0 40px rgba(128, 255, 212, 1); /* Lớn hơn, rõ hơn */
-    }
+    0%, 100% { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 15px rgba(128, 255, 212, 0.8); }
+    50% { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 0 25px rgba(128, 255, 212, 1); } /* Giảm độ lan tỏa */
 }
 
-/* Hiệu ứng phát sáng cho chữ - Rõ hơn */
+/* Hiệu ứng phát sáng cho chữ */
 @keyframes textGlowEffect {
-    0%, 100% {
-        text-shadow: 0 0 15px rgba(128, 255, 212, 0.8); /* Nhỏ hơn, sáng hơn */
-    }
-    50% {
-        text-shadow: 0 0 30px rgba(128, 255, 212, 1); /* Lớn hơn, rõ hơn */
-    }
+    0%, 100% { text-shadow: 0 0 10px rgba(128, 255, 212, 0.8); } /* Giảm độ lan tỏa */
+    50% { text-shadow: 0 0 20px rgba(128, 255, 212, 1); }
 }
 
-/* Responsive */
+/* Responsive tối ưu cho điện thoại */
 @media (max-width: 600px) {
-    .image-slider {
-        height: 250px;
+    .product-detail {
+        padding: 20px 10px; /* Giảm padding để tối ưu không gian */
     }
+
+    .image-slider {
+        height: 200px; /* Giảm chiều cao slider */
+        max-width: 100%; /* Đảm bảo vừa màn hình */
+    }
+
+    .image-slider.large-image {
+        max-width: 100%; /* Giới hạn trên mobile để vừa màn hình */
+    }
+
     .slide {
         object-fit: contain;
     }
+
     .product {
         flex-direction: column;
+        margin-bottom: 20px; /* Giảm margin */
+        gap: 8px; /* Giảm gap */
     }
+
     .detail-text {
         max-width: 90%;
     }
+
+    .detail-text .product-title {
+        font-size: 1.4em; /* Giảm kích thước chữ */
+        margin-top: 5px;
+    }
+
+    .detail-text .price {
+        font-size: 1.2em; /* Giảm kích thước giá */
+    }
+
+    .detail-text p.product-desc {
+        font-size: 0.8em; /* Giảm kích thước mô tả */
+    }
+
     .btn {
-        font-size: 1em;
-        padding: 10px 20px;
+        font-size: 0.9em; /* Giảm kích thước nút */
+        padding: 8px 15px;
+    }
+
+    .spacer {
+        height: 8px; /* Giảm chiều cao spacer */
+    }
+
+    .separator {
+        margin: 8px auto; /* Giảm margin */
     }
 }

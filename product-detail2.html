@@ -2,12 +2,13 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="theme-color" content="#F5E6DA">
     <title>Chi Tiết Sản Phẩm</title>
     <link rel="stylesheet" href="product-detail2.css">
     <!-- Preload hình ảnh để tăng tốc độ tải -->
-    <link rel="preload" href="./chitietsp1.png" as="image">
-    <link rel="preload" href="./chitietsp2.png" as="image">
+    <link rel="preload" href="./GEL NHA ĐAM-02.png" as="image">
+    <link rel="preload" href="./DẠNG XỊT NHA ĐAM.png" as="image">
 </head>
 <body>
     <div class="background-animation"></div>
@@ -17,7 +18,7 @@
 
         <!-- Sản phẩm 1 -->
         <div class="product">
-            <div class="image-slider">
+            <div class="image-slider large-image"> <!-- Thêm class large-image -->
                 <div class="slider-container">
                     <img src="./GEL NHA ĐAM-02.png" class="slide active" alt="Sản phẩm 1" loading="lazy" decoding="async">
                 </div>
@@ -35,7 +36,7 @@
 
         <!-- Sản phẩm 2 -->
         <div class="product">
-            <div class="image-slider">
+            <div class="image-slider large-image"> <!-- Thêm class large-image -->
                 <div class="slider-container">
                     <img src="./DẠNG XỊT NHA ĐAM.png" class="slide active" alt="Sản phẩm 2" loading="lazy" decoding="async">
                 </div>
@@ -50,6 +51,6 @@
         <a href="index.html" class="btn"><span>Quay Lại</span></a>
     </section>
 
-    <script src="product-detail.js" defer></script> <!-- Thêm defer để tải bất đồng bộ -->
+    <script src="product-detail.js" defer></script>
 </body>
 </html>
