@@ -32,11 +32,14 @@ header {
 
 .hero {
     text-align: center;
-    margin-top: -180px; /* Giảm khoảng cách trên cùng để bớt dư */
+    margin-top: 10px; /* Giảm đáng kể để không dư quá nhiều trên cùng */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero img {
-    max-width: 400px; /* Giữ kích thước logo */
+    max-width: 300px; /* Giảm kích thước logo để vừa trên mobile */
     width: 100%; /* Giữ tỷ lệ ảnh gốc */
     height: auto; /* Đảm bảo không bị méo */
     filter: brightness(5.0); /* Làm sáng hơn */
@@ -45,17 +48,17 @@ header {
 
 .hero h1 {
     font-size: 1.8em;
-    margin-top: -200px; /* Điều chỉnh lại để chữ gần logo hơn và không bị đẩy quá xa */
+    margin-top: 10px; /* Giảm khoảng cách giữa logo và chữ */
     font-weight: bold;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Hào quang tĩnh ban đầu */
-    animation: textGlow 2s infinite ease-in-out; /* Hiệu ứng phát sáng rõ ràng */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    animation: textGlow 2s infinite ease-in-out;
 }
 
 .hero p {
     font-size: 1em;
     color: #e0e0e0;
-    margin-top: 5px; /* Giữ khoảng cách nhỏ giữa h1 và p */
+    margin-top: 5px; /* Khoảng cách nhỏ giữa h1 và p */
 }
 
 /* Slider */
@@ -215,11 +218,11 @@ header {
 @keyframes textGlow {
     0%, 100% {
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
-                     0 0 20px rgba(255, 255, 255, 0.6); /* Hào quang nhỏ */
+                     0 0 20px rgba(255, 255, 255, 0.6);
     }
     50% {
         text-shadow: 0 0 20px rgba(255, 255, 255, 1),
-                     0 0 40px rgba(255, 255, 255, 0.9); /* Hào quang lớn */
+                     0 0 40px rgba(255, 255, 255, 0.9);
     }
 }
 
@@ -231,23 +234,28 @@ header {
 .bounce-in { animation: bounce-in 1s ease-in-out; }
 .slide-in { animation: slide-in 1s ease-in-out; }
 
-/* Responsive */
+/* Responsive tối ưu cho điện thoại */
 @media (max-width: 768px) {
     .slider {
-        height: 250px;
+        height: 200px; /* Giảm chiều cao slider để tối ưu không gian */
+    }
+
+    .hero {
+        margin-top: 5px; /* Giảm khoảng cách trên cùng để vừa màn hình */
     }
 
     .hero img {
-        max-width: 400px; /* Giữ kích thước logo trên mobile */
+        max-width: 200px; /* Giảm kích thước logo trên mobile */
     }
 
     .hero h1 {
-        font-size: 1.5em;
-        margin-top: 10px; /* Giữ khoảng cách hợp lý trên mobile */
+        font-size: 1.4em; /* Giảm kích thước chữ để cân đối */
+        margin-top: 5px; /* Giảm khoảng cách giữa logo và chữ */
     }
 
     .hero p {
-        font-size: 0.9em;
+        font-size: 0.8em; /* Giảm kích thước chữ phụ để vừa màn hình */
+        margin-top: 3px; /* Giảm khoảng cách giữa h1 và p */
     }
 
     .product-list {
@@ -256,10 +264,16 @@ header {
     }
 
     .product-item {
-        width: 90%;
+        width: 90%; /* Đảm bảo sản phẩm chiếm gần hết chiều rộng */
+        padding: 10px; /* Giảm padding để vừa màn hình */
     }
 
     .products h2 {
-        font-size: 1.3em;
+        font-size: 1.2em; /* Giảm kích thước tiêu đề sản phẩm */
+    }
+
+    .btn {
+        padding: 8px 12px; /* Giảm kích thước nút bấm */
+        font-size: 0.9em;
     }
 }
