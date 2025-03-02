@@ -11,8 +11,14 @@ body {
     background: linear-gradient(135deg, #49a770, #3aaf6b);
     overflow-x: hidden;
     min-height: 100vh;
-    animation: backgroundMove 5s infinite alternate ease-in-out;
-    will-change: background;
+    animation: backgroundMove 6s infinite alternate ease-in-out; /* Rút ngắn từ 5s để nhẹ hơn */
+    will-change: background-position;
+}
+
+/* Wrapper để trì hoãn hiển thị */
+.content-wrapper {
+    opacity: 0;
+    animation: fadeInContent 0.8s ease-out 0.3s forwards; /* Trì hoãn 0.3s để tăng UX */
 }
 
 /* Layout sản phẩm */
@@ -21,11 +27,11 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 100px 20px 30px;
+    padding: 80px 15px 20px; /* Giảm padding để tối ưu */
     width: 100%;
     position: relative;
     opacity: 0;
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.6s ease-out 0.5s forwards; /* Trì hoãn 0.5s để hiển thị chậm */
     will-change: opacity, transform;
 }
 
@@ -40,42 +46,29 @@ body {
     transform: translateX(-50%);
 }
 
-/* Tiêu đề sản phẩm */
-h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #ffffff;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: slideInDown 0.8s ease-out forwards;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
-    will-change: opacity, transform;
-}
-
 /* Hộp chứa ảnh */
 .image-container {
     width: 100%;
-    max-width: 450px; /* Kích thước mặc định cho sản phẩm 1 */
-    margin: 20px auto;
+    max-width: 450px; /* Kích thước mặc định */
+    margin: 15px auto; /* Giảm margin */
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     opacity: 0;
-    animation: zoomIn 0.8s ease-out forwards,
-               heartbeat 2s infinite ease-in-out;
+    animation: zoomIn 0.6s ease-out 0.7s forwards, /* Trì hoãn 0.7s */
+               heartbeat 2s infinite ease-in-out 0.7s; /* Trì hoãn đồng bộ */
     will-change: transform, opacity;
     backface-visibility: hidden;
     display: flex;
-    justify-content: center; /* Căn giữa hình ảnh mặc định */
-    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center;
+    align-items: center;
 }
 
 /* Class cho hình lớn hơn và lệch phải */
 .image-container.large-image {
-    max-width: 1800px; /* To gấp 4 lần (450px * 4) trên desktop */
-    justify-content: flex-end; /* Đẩy hình sang phải */
-    margin-left: 20%; /* Lệch sang phải trên desktop */
+    max-width: 1350px; /* To gấp 3 lần (450px * 3) */
+    justify-content: flex-end; /* Đẩy sang phải */
+    margin-left: 20%; /* Lệch sang phải */
 }
 
 /* Ảnh sản phẩm */
@@ -84,9 +77,10 @@ h2 {
     height: auto;
     object-fit: cover;
     border-radius: 15px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease-out; /* Rút ngắn từ 0.3s */
 }
 
+/* Hiệu ứng khi hover */
 .product-image:hover {
     transform: scale(1.05);
 }
@@ -97,7 +91,7 @@ h2 {
     color: white;
     font-size: 18px;
     opacity: 0;
-    animation: slideInLeft 0.8s ease-out forwards;
+    animation: slideInLeft 0.2s ease-out 0.10s forwards; /* Trì hoãn 0.9s */
     line-height: 1.5;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     will-change: opacity, transform;
@@ -108,7 +102,8 @@ h2 {
     font-size: 28px;
     font-weight: bold;
     color: #ffffff;
-    will-change: transform;
+    animation: fadeInUp 0.6s ease-out 1s forwards; /* Trì hoãn 1s */
+    will-change: opacity, transform;
 }
 
 /* Giá sản phẩm */
@@ -117,8 +112,8 @@ h2 {
     color: #8B4513;
     font-weight: bold;
     opacity: 0;
-    animation: zoomIn 0.8s ease-out forwards,
-               heartbeat 2s infinite ease-in-out;
+    animation: zoomIn 0.6s ease-out 1.1s forwards, /* Trì hoãn 1.1s */
+               heartbeat 2s infinite ease-in-out 1.1s;
     margin-top: 10px;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
     will-change: transform, opacity;
@@ -127,16 +122,16 @@ h2 {
 /* Nút bấm */
 .btn {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 10px 20px; /* Giảm padding */
     background-color: white;
     color: #2d3436;
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
-    font-size: 18px;
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    font-size: 16px; /* Giảm kích thước chữ */
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out;
     opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
+    animation: fadeInUp 0.6s ease-out 1.2s forwards; /* Trì hoãn 1.2s */
     box-shadow: 0 3px 8px rgba(255, 255, 255, 0.1);
     margin-top: 15px;
     will-change: transform, opacity;
@@ -161,69 +156,73 @@ h2 {
     to { background-position: right bottom; }
 }
 
-/* Hiệu ứng fade in */
+/* Hiệu ứng fade in cho toàn bộ nội dung */
+@keyframes fadeInContent {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Hiệu ứng fade in cho các phần tử */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(20px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInDown {
-    from { opacity: 0; transform: translateY(-20px); }
+    from { opacity: 0; transform: translateY(-15px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-40px); }
+    from { opacity: 0; transform: translateX(-30px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.8); }
+    from { opacity: 0; transform: scale(0.9); } /* Giảm biên độ */
     to { opacity: 1; transform: scale(1); }
 }
 
 /* Responsive tối ưu cho điện thoại */
 @media (max-width: 768px) {
     .product-detail {
-        padding: 60px 10px 20px; /* Giảm padding để tối ưu không gian */
+        padding: 50px 10px 15px; /* Giảm padding để tối ưu không gian */
     }
 
     .image-container {
-        max-width: 100%; /* Đảm bảo hình vừa màn hình */
-        animation: zoomIn 0.8s ease-out forwards,
-                   heartbeat 2s infinite ease-in-out;
+        max-width: 100%; /* Đảm bảo vừa màn hình */
+        animation: zoomIn 0.6s ease-out 0.7s forwards,
+                   heartbeat 2s infinite ease-in-out 0.7s;
     }
 
     .image-container.large-image {
-        max-width: 100%; /* Giới hạn kích thước trên mobile */
-        justify-content: flex-end; /* Đẩy sang phải */
-        margin-left: 10%; /* Lệch sang phải vừa phải */
-        margin-right: 0; /* Xóa margin phải để lệch rõ hơn */
+        max-width: 100%; /* Giới hạn trên mobile */
+        justify-content: flex-end;
+        margin-left: 10%; /* Lệch phải vừa phải */
+        margin-right: 0;
     }
 
     .product-image {
-        width: 100%; /* Đảm bảo hình chiếm toàn bộ container */
-        max-width: 100%; /* Không vượt quá container */
+        width: 100%;
+        max-width: 100%;
     }
 
     .detail-text {
-        max-width: 90%; /* Giảm max-width để vừa màn hình */
-        font-size: 16px;
+        max-width: 90%;
+        font-size: 14px; /* Giảm kích thước chữ */
     }
 
     .detail-text h3 {
-        font-size: 22px; /* Giảm kích thước chữ cho cân đối */
+        font-size: 20px; /* Giảm kích thước */
     }
 
     .price {
-        font-size: 20px; /* Giảm kích thước giá cho phù hợp */
-        animation: zoomIn 0.8s ease-out forwards,
-                   heartbeat 2s infinite ease-in-out;
+        font-size: 18px; /* Giảm kích thước */
     }
 
     .btn {
-        width: 85%; /* Tối ưu nút bấm trên mobile */
+        width: 80%; /* Tối ưu nút bấm */
         font-size: 14px;
-        padding: 10px 20px;
+        padding: 8px 15px;
     }
 }

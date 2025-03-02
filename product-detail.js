@@ -135,3 +135,61 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Xử lý slider ảnh (hiện tại chỉ 1 ảnh mỗi sản phẩm)
+    const products = document.querySelectorAll(".product-detail");
+    
+    products.forEach(product => {
+        const images = product.querySelectorAll(".product-image");
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach(img => img.classList.remove("active"));
+            images[index].classList.add("active");
+            currentIndex = index;
+        }
+
+        if (images.length > 0) {
+            showImage(0);
+        }
+
+        // Hỗ trợ vuốt trên mobile (dự phòng cho tương lai)
+        const imageContainer = product.querySelector(".image-container");
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        imageContainer.addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        imageContainer.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchStartX - touchEndX > 50 && currentIndex < images.length - 1) {
+                showImage(currentIndex + 1);
+            } else if (touchEndX - touchStartX > 50 && currentIndex > 0) {
+                showImage(currentIndex - 1);
+            }
+        }
+    });
+
+    // Hiệu ứng quay vòng và nổ khi nhấp vào ảnh
+    const productImages = document.querySelectorAll(".product-image");
+    
+    productImages.forEach(image => {
+        image.addEventListener("click", () => {
+            image.style.animation = 'none';
+            void image.offsetWidth; // Reflow
+            image.style.animation = 'spinAndExplode 0.8s ease-in-out forwards'; // Nhanh hơn
+            
+            image.addEventListener("animationend", () => {
+                image.style.animation = 'none';
+                void image.offsetWidth; // Reflow
+                image.style.animation = 'fallFromTop 1s ease-out forwards'; // Nhanh hơn
+            }, { once: true });
+        });
+    });
+});
