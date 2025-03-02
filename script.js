@@ -5,33 +5,40 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = 0;
     const totalSlides = dots.length;
 
-    // Kiểm tra xem slides và dots có tồn tại không
     if (!slides || !dots.length) {
         console.error("Không tìm thấy slider hoặc dots!");
         return;
     }
 
     function showSlide(index) {
-        // Đảm bảo index nằm trong phạm vi hợp lệ
         if (index >= totalSlides) index = 0;
         if (index < 0) index = totalSlides - 1;
         slides.style.transform = `translateX(-${index * (100 / totalSlides)}%)`;
         dots.forEach(dot => dot.classList.remove("active"));
         dots[index].classList.add("active");
-        currentIndex = index; // Cập nhật currentIndex
+        currentIndex = index;
     }
 
-    // Thêm sự kiện click cho dots
     dots.forEach((dot, index) => {
         dot.addEventListener("click", function () {
             showSlide(index);
         });
     });
 
-    // Tự động chuyển slide sau mỗi 3 giây
-    setInterval(function () {
+    // Tự động chuyển slide sau mỗi 4 giây (tăng nhẹ để giảm tải)
+    let slideInterval = setInterval(function () {
         showSlide(currentIndex + 1);
-    }, 3000);
+    }, 4000);
+
+    // Tạm dừng slider khi tương tác để giảm tải CPU
+    slides.addEventListener("touchstart", function () {
+        clearInterval(slideInterval);
+    });
+    slides.addEventListener("touchend", function () {
+        slideInterval = setInterval(function () {
+            showSlide(currentIndex + 1);
+        }, 4000);
+    });
 
     // Xử lý trang chi tiết sản phẩm (nếu có)
     const params = new URLSearchParams(window.location.search);
@@ -93,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             setInterval(function () {
                 showDetailSlide(detailIndex + 1);
-            }, 3000);
+            }, 4000); // Đồng bộ với slider chính
         }
     }
 });

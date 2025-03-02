@@ -18,32 +18,33 @@ body {
 header {
     background: linear-gradient(135deg, #2e7d32, #81c784);
     color: white;
-    padding: 20px;
+    padding: 15px; /* Giảm padding để tối ưu không gian */
     text-align: center;
     border-radius: 0 0 20px 20px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    animation: fadeInHeader 1s ease-in-out forwards;
+    animation: fadeInHeader 0.8s ease-out forwards; /* Rút ngắn thời gian */
+    will-change: opacity, transform;
 }
 
 @keyframes fadeInHeader {
-    from { opacity: 0; transform: translateY(-50px); }
+    from { opacity: 0; transform: translateY(-20px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateY(0); }
 }
 
 .hero {
     text-align: center;
-    margin-top: 10px; /* Giảm đáng kể để không dư quá nhiều trên cùng */
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .hero img {
-    max-width: 300px; /* Giảm kích thước logo để vừa trên mobile */
-    width: 100%; /* Giữ tỷ lệ ảnh gốc */
-    height: auto; /* Đảm bảo không bị méo */
-    filter: brightness(5.0); /* Làm sáng hơn */
-    border: none; /* Giữ nguyên định dạng gốc */
+    max-width: 300px; /* Kích thước mặc định trên desktop */
+    width: 100%;
+    height: auto;
+    filter: brightness(5.0);
+    border: none;
 }
 
 .hero h1 {
@@ -51,14 +52,15 @@ header {
     margin-top: 10px; /* Giảm khoảng cách giữa logo và chữ */
     font-weight: bold;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Giảm độ lan tỏa để nhẹ hơn */
     animation: textGlow 2s infinite ease-in-out;
+    will-change: transform, text-shadow;
 }
 
 .hero p {
     font-size: 1em;
     color: #e0e0e0;
-    margin-top: 5px; /* Khoảng cách nhỏ giữa h1 và p */
+    margin-top: 5px;
 }
 
 /* Slider */
@@ -67,23 +69,23 @@ header {
     width: 100%;
     height: 350px;
     overflow: hidden;
-    margin-top: 20px;
+    margin-top: 15px; /* Giảm margin để tối ưu không gian */
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .slides {
     display: flex;
     width: 600%; /* 6 ảnh */
     height: 100%;
-    transition: transform 0.6s ease-in-out;
+    transition: transform 0.5s ease-out; /* Rút ngắn thời gian để mượt hơn */
     will-change: transform;
 }
 
 .slide {
-    width: 16.67%; /* Mỗi ảnh chiếm 1/6 chiều rộng (100% / 6) */
+    width: 16.67%;
     height: 100%;
-    object-fit: contain; /* Hiển thị đầy đủ ảnh, không cắt góc */
+    object-fit: contain;
 }
 
 /* Dots */
@@ -93,16 +95,16 @@ header {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 8px; /* Giảm gap để vừa màn hình nhỏ */
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 10px; /* Giảm kích thước dot */
+    height: 10px;
     background: #ccc;
     border-radius: 50%;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background 0.2s ease; /* Rút ngắn transition */
 }
 
 .dot.active {
@@ -113,34 +115,36 @@ header {
 .products {
     background: #ffffff;
     border-radius: 15px;
-    padding: 20px;
-    margin-top: 20px;
+    padding: 15px; /* Giảm padding để tiết kiệm không gian */
+    margin-top: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    animation: fade-up 0.8s ease-out forwards; /* Rút ngắn thời gian */
 }
 
 .products h2 {
     font-size: 1.5em;
     color: #2e7d32;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .product-list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px; /* Giảm gap để vừa màn hình nhỏ */
 }
 
 .product-item {
     background: #f1f8e9;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px; /* Giảm padding */
     width: 250px;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out; /* Rút ngắn transition */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    will-change: transform;
 }
 
 .product-item:hover {
@@ -155,7 +159,7 @@ header {
 
 .product-item h3 {
     font-size: 1.2em;
-    margin: 10px 0;
+    margin: 8px 0; /* Giảm margin */
     color: #2e7d32;
 }
 
@@ -174,7 +178,8 @@ header {
     text-decoration: none;
     border-radius: 8px;
     font-weight: bold;
-    transition: background 0.3s, box-shadow 0.3s;
+    transition: background 0.2s ease-out, box-shadow 0.2s ease-out; /* Rút ngắn thời gian */
+    will-change: background;
 }
 
 .btn:hover {
@@ -184,96 +189,107 @@ header {
 
 /* Hiệu ứng xuất hiện */
 @keyframes fade-down {
-    from { opacity: 0; transform: translateY(-30px); }
+    from { opacity: 0; transform: translateY(-20px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slide-in-left {
-    from { opacity: 0; transform: translateX(-50px); }
+    from { opacity: 0; transform: translateX(-30px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes fade-up {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(20px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes zoom-in {
-    from { opacity: 0; transform: scale(0.8); }
+    from { opacity: 0; transform: scale(0.9); } /* Giảm biên độ */
     to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes bounce-in {
-    0% { opacity: 0; transform: scale(0.5); }
-    60% { opacity: 1; transform: scale(1.1); }
+    0% { opacity: 0; transform: scale(0.7); } /* Giảm biên độ */
+    60% { opacity: 1; transform: scale(1.05); }
     100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slide-in {
-    from { opacity: 0; transform: translateX(-100%); }
+    from { opacity: 0; transform: translateX(-50px); } /* Giảm biên độ */
     to { opacity: 1; transform: translateX(0); }
 }
 
 /* Hiệu ứng phát sáng cho chữ GEL DƯỠNG TÓC SOHINY */
 @keyframes textGlow {
     0%, 100% {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
-                     0 0 20px rgba(255, 255, 255, 0.6);
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Giảm độ lan tỏa để nhẹ hơn */
     }
     50% {
-        text-shadow: 0 0 20px rgba(255, 255, 255, 1),
-                     0 0 40px rgba(255, 255, 255, 0.9);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 1); /* Giảm độ lan tỏa */
     }
 }
 
-.fade-down { animation: fade-down 1s ease-in-out; }
-.slide-in-left { animation: slide-in-left 1s ease-in-out; }
-.fade-in { animation: fade-up 1s ease-in-out; }
-.fade-up { animation: fade-up 1s ease-in-out; }
-.zoom-in { animation: zoom-in 1s ease-in-out; }
-.bounce-in { animation: bounce-in 1s ease-in-out; }
-.slide-in { animation: slide-in 1s ease-in-out; }
+.fade-down { animation: fade-down 0.8s ease-out; } /* Rút ngắn thời gian */
+.slide-in-left { animation: slide-in-left 0.8s ease-out; }
+.fade-in { animation: fade-up 0.8s ease-out; }
+.fade-up { animation: fade-up 0.8s ease-out; }
+.zoom-in { animation: zoom-in 0.8s ease-out; }
+.bounce-in { animation: bounce-in 0.8s ease-out; }
+.slide-in { animation: slide-in 0.8s ease-out; }
 
 /* Responsive tối ưu cho điện thoại */
 @media (max-width: 768px) {
+    header {
+        padding: 10px; /* Giảm padding trên mobile */
+    }
+
     .slider {
-        height: 200px; /* Giảm chiều cao slider để tối ưu không gian */
+        height: 180px; /* Giảm chiều cao để tối ưu không gian */
     }
 
     .hero {
-        margin-top: 5px; /* Giảm khoảng cách trên cùng để vừa màn hình */
+        margin-top: 5px; /* Giảm khoảng cách trên cùng */
     }
 
     .hero img {
-        max-width: 200px; /* Giảm kích thước logo trên mobile */
+        max-width: 180px; /* Giảm kích thước logo cho mobile */
     }
 
     .hero h1 {
-        font-size: 1.4em; /* Giảm kích thước chữ để cân đối */
+        font-size: 1.2em; /* Giảm kích thước chữ */
         margin-top: 5px; /* Giảm khoảng cách giữa logo và chữ */
     }
 
     .hero p {
-        font-size: 0.8em; /* Giảm kích thước chữ phụ để vừa màn hình */
+        font-size: 0.7em; /* Giảm kích thước chữ phụ */
         margin-top: 3px; /* Giảm khoảng cách giữa h1 và p */
     }
 
+    .products {
+        padding: 10px; /* Giảm padding */
+        margin-top: 10px;
+    }
+
     .product-list {
-        flex-direction: column;
-        align-items: center;
+        gap: 8px; /* Giảm gap */
     }
 
     .product-item {
-        width: 90%; /* Đảm bảo sản phẩm chiếm gần hết chiều rộng */
-        padding: 10px; /* Giảm padding để vừa màn hình */
+        width: 90%; /* Đảm bảo vừa màn hình */
+        padding: 8px; /* Giảm padding */
     }
 
     .products h2 {
-        font-size: 1.2em; /* Giảm kích thước tiêu đề sản phẩm */
+        font-size: 1.1em; /* Giảm kích thước tiêu đề */
+    }
+
+    .product-item h3 {
+        font-size: 1em; /* Giảm kích thước chữ */
+        margin: 5px 0;
     }
 
     .btn {
-        padding: 8px 12px; /* Giảm kích thước nút bấm */
-        font-size: 0.9em;
+        padding: 6px 10px; /* Giảm kích thước nút */
+        font-size: 0.8em;
     }
 }

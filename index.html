@@ -2,9 +2,14 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="theme-color" content="#2e7d32">
     <title>Website Sản Phẩm</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Preload font và hình ảnh để tăng tốc độ tải -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="./logo-01.png" as="image">
+    <link rel="preload" href="./nen01.jpg" as="image">
 </head>
 <body>
     <!-- Phần đầu trang -->
@@ -21,12 +26,12 @@
     <!-- Slider ảnh nền -->
     <div class="slider">
         <div class="slides slide-in">
-            <img src="./nen01.jpg" alt="Ảnh 1" class="slide">
-            <img src="./nen02.jpg" alt="Ảnh 2" class="slide">
-            <img src="./nen03.jpg" alt="Ảnh 3" class="slide">
-            <img src="./nen04.jpg" alt="Ảnh 4" class="slide">
-            <img src="./nen05.jpg" alt="Ảnh 5" class="slide">
-            <img src="./nen06.jpg" alt="Ảnh 6" class="slide">
+            <img src="./nen01.jpg" alt="Ảnh 1" class="slide" loading="lazy" decoding="async">
+            <img src="./nen02.jpg" alt="Ảnh 2" class="slide" loading="lazy" decoding="async">
+            <img src="./nen03.jpg" alt="Ảnh 3" class="slide" loading="lazy" decoding="async">
+            <img src="./nen04.jpg" alt="Ảnh 4" class="slide" loading="lazy" decoding="async">
+            <img src="./nen05.jpg" alt="Ảnh 5" class="slide" loading="lazy" decoding="async">
+            <img src="./nen06.jpg" alt="Ảnh 6" class="slide" loading="lazy" decoding="async">
         </div>
         <div class="dots">
             <span class="dot active"></span>
@@ -43,21 +48,21 @@
         <h2>Danh Sách Sản Phẩm</h2>
         <div class="product-list">
             <div class="product-item fade-up">
-                <img src="./GEL DẠNG BƯỞI-01.png" alt="Gel Dưỡng Tóc">
+                <img src="./GEL DẠNG BƯỞI-01.png" alt="Gel Dưỡng Tóc" loading="lazy" decoding="async">
                 <h3>Bộ Sản Phẩm Dưỡng Tóc Tinh Chất Bưởi.</h3>
                 <p class="price"></p>
                 <p>Tinh Chất Bưởi</p>
                 <a href="product-detail.html?name=SanPham1&price=150000&img=sanpham1.jpg&desc=Mo+ta+ngan+gon+ve+san+pham+1" class="btn">Xem Chi Tiết</a>
             </div>
             <div class="product-item zoom-in">
-                <img src="./GEL NHA ĐAM-02.png" alt="Serum Kích Thích Mọc Tóc">
+                <img src="./GEL NHA ĐAM-02.png" alt="Serum Kích Thích Mọc Tóc" loading="lazy" decoding="async">
                 <h3>Bộ Sản Phẩm Dưỡng Tóc Tinh Chất Bưởi & Nha Đam.</h3>
                 <p class="price"></p>
                 <p>Tinh Chất Bưởi & Nha Đam.</p>
                 <a href="product-detail2.html?name=SanPham2&price=250000&img=chitietsp2.png&desc=San+pham+2+co+chat+luong+tot&images=chitietsp2.1.png,chitietsp2.2.png,chitietsp2.3.png,chitietsp2.4.png" class="btn">Xem Chi Tiết</a>
             </div>
             <div class="product-item bounce-in">
-                <img src="./GEL DẠNG BỒ KẾT-03.png" alt="Dầu Gội Thảo Dược">
+                <img src="./GEL DẠNG BỒ KẾT-03.png" alt="Dầu Gội Thảo Dược" loading="lazy" decoding="async">
                 <h3>Bộ Sản Phẩm Dưỡng Tóc Tinh Chất Bưởi & Bồ Kết.</h3>
                 <p class="price"></p>
                 <p>Tinh Chất Bưởi & Bồ Kết.</p>
@@ -66,6 +71,6 @@
         </div>
     </section>
 
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
