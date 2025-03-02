@@ -193,3 +193,39 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    // Hiệu ứng quay vòng và nổ khi nhấp vào ảnh
+    const productImages = document.querySelectorAll(".product-image");
+    
+    productImages.forEach(image => {
+        image.addEventListener("click", () => {
+            image.style.animation = 'none';
+            void image.offsetWidth; // Reflow
+            image.style.animation = 'spinAndExplode 0.7s ease-in-out forwards';
+            
+            image.addEventListener("animationend", () => {
+                image.style.animation = 'none';
+                void image.offsetWidth; // Reflow
+                image.style.animation = 'fallFromTop 0.8s ease-out forwards';
+            }, { once: true });
+        });
+    });
+
+    // Hỗ trợ vuốt trên mobile (dự phòng cho tương lai nếu thêm nhiều ảnh)
+    const imageContainers = document.querySelectorAll(".image-container");
+    imageContainers.forEach(container => {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        container.addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        container.addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            if (touchStartX - touchEndX > 50 || touchEndX - touchStartX > 50) {
+                // Hiện tại không cần xử lý vì chỉ có 1 ảnh, có thể mở rộng sau
+            }
+        });
+    });
+});
