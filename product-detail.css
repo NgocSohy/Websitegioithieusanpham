@@ -48,7 +48,7 @@ h2 {
     opacity: 0;
     transform: translateY(-20px);
     animation: slideInDown 0.8s ease-out forwards;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Giữ shadow nhẹ */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
     will-change: opacity, transform;
 }
@@ -56,16 +56,26 @@ h2 {
 /* Hộp chứa ảnh */
 .image-container {
     width: 100%;
-    max-width: 450px;
+    max-width: 450px; /* Kích thước mặc định cho sản phẩm 1 */
     margin: 20px auto;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Xóa hào quang, chỉ giữ shadow cơ bản */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     opacity: 0;
     animation: zoomIn 0.8s ease-out forwards,
-               heartbeat 2s infinite ease-in-out; /* Giữ heartbeat */
+               heartbeat 2s infinite ease-in-out;
     will-change: transform, opacity;
     backface-visibility: hidden;
+    display: flex;
+    justify-content: center; /* Căn giữa hình ảnh mặc định */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+/* Class cho hình lớn hơn và lệch phải */
+.image-container.large-image {
+    max-width: 1800px; /* To gấp 4 lần (450px * 4) trên desktop */
+    justify-content: flex-end; /* Đẩy hình sang phải */
+    margin-left: 20%; /* Lệch sang phải trên desktop */
 }
 
 /* Ảnh sản phẩm */
@@ -89,7 +99,7 @@ h2 {
     opacity: 0;
     animation: slideInLeft 0.8s ease-out forwards;
     line-height: 1.5;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Giữ shadow nhẹ */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     will-change: opacity, transform;
 }
 
@@ -98,8 +108,7 @@ h2 {
     font-size: 28px;
     font-weight: bold;
     color: #ffffff;
-    /* Xóa text-shadow phát sáng */
-    will-change: transform; /* Xóa will-change cho text-shadow */
+    will-change: transform;
 }
 
 /* Giá sản phẩm */
@@ -109,9 +118,9 @@ h2 {
     font-weight: bold;
     opacity: 0;
     animation: zoomIn 0.8s ease-out forwards,
-               heartbeat 2s infinite ease-in-out; /* Giữ heartbeat */
+               heartbeat 2s infinite ease-in-out;
     margin-top: 10px;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2); /* Giữ shadow nhẹ */
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
     will-change: transform, opacity;
 }
 
@@ -176,32 +185,45 @@ h2 {
 /* Responsive tối ưu cho điện thoại */
 @media (max-width: 768px) {
     .product-detail {
-        padding: 80px 15px 20px;
+        padding: 60px 10px 20px; /* Giảm padding để tối ưu không gian */
     }
 
     .image-container {
-        max-width: 95%;
+        max-width: 100%; /* Đảm bảo hình vừa màn hình */
         animation: zoomIn 0.8s ease-out forwards,
-                   heartbeat 2s infinite ease-in-out; /* Giữ heartbeat */
+                   heartbeat 2s infinite ease-in-out;
+    }
+
+    .image-container.large-image {
+        max-width: 100%; /* Giới hạn kích thước trên mobile */
+        justify-content: flex-end; /* Đẩy sang phải */
+        margin-left: 10%; /* Lệch sang phải vừa phải */
+        margin-right: 0; /* Xóa margin phải để lệch rõ hơn */
+    }
+
+    .product-image {
+        width: 100%; /* Đảm bảo hình chiếm toàn bộ container */
+        max-width: 100%; /* Không vượt quá container */
     }
 
     .detail-text {
-        max-width: 100%;
+        max-width: 90%; /* Giảm max-width để vừa màn hình */
         font-size: 16px;
     }
 
     .detail-text h3 {
-        font-size: 24px;
+        font-size: 22px; /* Giảm kích thước chữ cho cân đối */
     }
 
     .price {
-        font-size: 22px;
+        font-size: 20px; /* Giảm kích thước giá cho phù hợp */
         animation: zoomIn 0.8s ease-out forwards,
-                   heartbeat 2s infinite ease-in-out; /* Giữ heartbeat */
+                   heartbeat 2s infinite ease-in-out;
     }
 
     .btn {
-        width: 90%;
-        font-size: 16px;
+        width: 85%; /* Tối ưu nút bấm trên mobile */
+        font-size: 14px;
+        padding: 10px 20px;
     }
 }
